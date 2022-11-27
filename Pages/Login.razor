@@ -1,0 +1,50 @@
+@page "/Login"
+
+<div class="container">
+    <div class="row ">
+        <div class="col-5">
+            <div class="card" style="width: 15rem;margin-left:26px;margin-top:10px;">
+                <img src="../imagens/funcionario.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">@titulo</p>
+                    <p>@msg</p>
+                </div>
+            </div>
+           
+                <input class="form-control form-control-sm" style="margin-top:10px;" placeholder="Entre com o email" >
+          
+            
+                <input type="password" class="form-control form-control-sm" style="margin-top:10px;" placeholder="Entre com a senha" id="inputPassword">
+        
+            
+                <button type="button" class="btn btn-outline-dark form-control form-control-sm"
+                    @onclick="MostrarFuncMes" style="margin-top:10px;">Acessar</button>
+          
+           
+        </div>
+        
+     
+    </div>
+</div>
+
+<!--Programação C# - Nesse caso substituindo o JavaScript ou ReactDOM-->
+
+@code {
+    private string? msg;
+    private string? titulo = "SIA- Sistema Integrado de Aeronaves";
+    public string? NomeCompleto { get; set; } = "Manoel Ferreira";
+    public string? Cargo { get; set; } = "Piloto";
+    private DateTime DataNasc{get;set;} = new DateTime(1979, 11, 20, 22, 59, 59);
+    public void MostrarFuncMes()
+    {     
+        var diaAtual = DateTime.Now.Day;
+        var mesAtual = DateTime.Now.Month;
+        titulo = "Aniversariantes";
+        if(DataNasc.Day.Equals(diaAtual)&&DataNasc.Month.Equals(mesAtual)){
+           msg = $"Parabéns {Cargo} {NomeCompleto}.Hoje: {DataNasc.Day}/{DataNasc.Month} é um dia especial,pois foi o dia em que você veio iluminar essa terra com o seu potêncial!";
+        }else{
+           msg ="Não temos aniversariantes hoje!";
+        }  
+       
+    }
+}
